@@ -61,5 +61,6 @@ func simDrop(elevation int,
 		ladingLocation = "You hit the target!"
 	}
 
+
 	return ladingLocation
 }
