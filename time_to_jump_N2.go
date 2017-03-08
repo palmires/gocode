@@ -13,7 +13,7 @@ func main(){
 	windNorth := -4
 	windWest := -4
 
-	deployChuteAtElevation := 1000
+	deployChuteAtElevation := 2000
 
 	ladingLocation := simDrop(elevation,
 							destinationNorth,
@@ -36,21 +36,23 @@ func simDrop(elevation int,
 
 	locationNorth := 0
 	locationWest := 0
-	locationNorth -=-1
-	fmt.Println(locationNorth,locationWest)
 	deployed := false
+/*
+So we had 400 tacts. In one tact we have +1 or +4 on variable locationNorth and locationWest. 1*x+4*y = 1000 and x+y=400
+x = 200 y = 200
+After 200 tacts we should deployed. Thats all - deployChuteAtElevation := 200
+*/
 	for elevation > 0 {
 		if elevation == deployChuteAtElevation {
 			deployed = true
 		}
 		if !deployed {
-			locationNorth -= windNorth / 4
+//Because we have a negative number in windNorth (-4) and apply decrement operation(-=) in result we had a positive number in locationNorth
+			locationNorth -= windNorth / 4  
 			locationWest -= windWest / 4
 		} else {
-			//fmt.Println("Before wind: North, West -",locationNorth, locationWest)
 			locationNorth -= windNorth
 			locationWest -= windWest
-			//fmt.Println("After wind: North, West -",locationNorth, locationWest)
 		}
 		elevation -= 10
 	}
@@ -64,3 +66,8 @@ func simDrop(elevation int,
 
 	return ladingLocation
 }
+
+
+
+
+//Result deployChuteAtElevation := 2000
