@@ -27,8 +27,6 @@ func pingSattelite(request Request) string {
 //So we need next:x=true,y=true,z=true.
 func accessible(agent string) bool {
 	a := strings.Split(agent, " ")
-	q := strings.Index("DeeFerclozej","eeFercloze")
-	fmt.Println(q)
 	if len(a) != 3 { return false }
 	b := a[0]
 	c := a[1]
@@ -36,9 +34,7 @@ func accessible(agent string) bool {
 	// EqualFold reports whether b and c, interpreted as UTF-8 strings,
 	// are equal under Unicode case-folding.
 	x := strings.EqualFold(b,c) //There we had false
-	fmt.Println("X",x)
 	y := b != strings.ToLower(c) // There we had true. Compare two strings.
-	fmt.Println("Y",y)
 	// Index returns the index of the first instance of b+c in d, 
 	// or -1 if b+c is not present in d.
 	//
@@ -49,7 +45,6 @@ func accessible(agent string) bool {
 	// 			and differ in lowercase comparing.
 	//Additionally:unicode symbol had len=2
 	z := strings.Index(d, b+c) == 1 && len(d) == 5
-	fmt.Println("Z",z,d,b+c,len(d))
 	return x && y && z
 }
 
